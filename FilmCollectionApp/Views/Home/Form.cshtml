@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Form";
+}
+
+@model FilmCollectionApp.Models.Films
+
+
+<!--Movie Forms page with linking asp-for for the c# model page-->
+<h1>Movie Input Form</h1>
+<form asp-action="Form" method="post">
+    <div>
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" />
+    </div>
+
+    <div>
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" />
+    </div>
+
+    <div>
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" />
+    </div>
+
+    <div>
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" />
+    </div>
+
+    <div>
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Edited">Edited:</label>
+        <select asp-for="Edited">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Lent">Lent To:</label>
+        <input asp-for="Lent" />
+    </div>
+
+    <div>
+        <label asp-for="Notes">Notes:</label>
+        <input asp-for="Notes" />
+    </div>
+
+    <button type="submit">Submit</button>
+    <div asp-validation-summary="All"></div>
+</form>
+
+

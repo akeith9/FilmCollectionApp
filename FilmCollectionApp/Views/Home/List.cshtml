@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+}
+
+@model IEnumerable<FilmCollectionApp.Models.Films>
+
+<!--movie list page with if statment that does not allow independence day to be displayed-->
+<div class="table">
+    <h2>Movie List</h2>
+    <br/>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent To</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (FilmCollectionApp.Models.Films x in Model)
+            {
+                @if (@x.Title != "Independence Day")
+                {
+                    <tr>
+                        <td>@x.Category</td>
+                        <td>@x.Title</td>
+                        <td>@x.Year</td>
+                        <td>@x.Director</td>
+                        <td>@x.Rating</td>
+                        <td>@x.Edited</td>
+                        <td>@x.Lent</td>
+                        <td>@x.Notes</td>
+                        <td>
+                            <form asp-action="EditPost1" method="post">
+                                <input type="hidden" name="film" value="@x.FilmID" />
+                                <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                                    Edit
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-action="Delete" method="post">
+                                <input type="hidden" name="film" value="@x.FilmID" />
+                                <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>

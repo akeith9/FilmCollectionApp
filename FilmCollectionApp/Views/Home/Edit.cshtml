@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Edit Form";
+    @model FilmCollectionApp.Models.Films
+
+}
+
+
+<!--Movie Forms page with linking asp-for for the c# model page-->
+<h1>Movie Edit Form</h1>
+<h2>Submit Edit for @ViewBag.Films.Title</h2>
+<form asp-action="Form" method="post">
+    <div>
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" />
+    </div>
+
+    <div>
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" />
+    </div>
+
+    <div>
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" />
+    </div>
+
+    <div>
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" />
+    </div>
+
+    <div>
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Edited">Edited:</label>
+        <select asp-for="Edited">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="Lent">Lent To:</label>
+        <input asp-for="Lent" />
+    </div>
+
+    <div>
+        <label asp-for="Notes">Notes:</label>
+        <input asp-for="Notes" />
+    </div>
+
+    <input type="hidden" asp-for="FilmID" value="@ViewBag.Films.FilmID" />
+    <button type="submit">Update @ViewBag.Films.Title</button>
+    <div asp-validation-summary="All"></div>
+</form>
